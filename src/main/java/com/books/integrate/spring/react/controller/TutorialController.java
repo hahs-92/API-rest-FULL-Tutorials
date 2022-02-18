@@ -165,4 +165,13 @@ public class TutorialController {
 		}
 	}
 
+	@GetMapping("/query")
+	public ResponseEntity<List<Tutorial>> getByPrice(@RequestParam("price") double price) {
+		try {
+			return new ResponseEntity<>(tutorialRepository.findByPrice(price), HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 }
