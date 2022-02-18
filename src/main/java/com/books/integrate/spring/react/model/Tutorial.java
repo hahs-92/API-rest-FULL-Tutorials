@@ -10,23 +10,27 @@ public class Tutorial {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	@Column(name = "title")
+	@Column
 	private String title;
 
-	@Column(name = "description")
+	@Column
 	private String description;
 
-	@Column(name = "published")
+	@Column
 	private boolean published;
+
+	@Column
+	private double price;
 
 	public Tutorial() {
 
 	}
 
-	public Tutorial(String title, String description, boolean published) {
+	public Tutorial(String title, String description, boolean published, double price) {
 		this.title = title;
 		this.description = description;
 		this.published = published;
+		this.price = price;
 	}
 
 	public long getId() {
@@ -59,9 +63,22 @@ public class Tutorial {
 		this.published = isPublished;
 	}
 
-	@Override
-	public String toString() {
-		return "Tutorial [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
+	public double getPrice() {
+		return price;
 	}
 
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Tutorial{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", description='" + description + '\'' +
+				", published=" + published +
+				", price=" + price +
+				'}';
+	}
 }
